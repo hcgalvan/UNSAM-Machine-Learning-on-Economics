@@ -1,23 +1,15 @@
 # UNSAM-Machine-Learning-on-Economics
 Supervised learning: Combine structural model with matrix factorization techniques and computational methods from ML
-## Dataset Iniciales de exploracion
-### DataSet 1 - scanner-data.csv
-https://www.kaggle.com/marian447/retail-store-sales-transactions?select=scanner_data.csv
+# OBJETIVO: 
+* Generar propuestas de marketing y 
+* dar soporte a las decisiones en comercialización
+# METAS:
+1. Retención de clientes a traves de Analíticas de Productos
+2. Desarrollo Recomendación de Productos a clientes de conductas similares
+3. Generación del Ciclo de valor de vida del cliente en la empresa
+4. Segmentación de clientes
 
-Detailed data on sales of consumer goods obtained by ‘scanning’ the bar codes for individual products at electronic points of sale in a retail store. The data provide detailed information about quantities, characteristics and values of goods sold as well as their prices.
-
-The anonymized dataset includes 64.682 transactions of 5.242 SKU's sold to 22.625 customers during one year.
-
-- Dataset Description
-- Date of Sales Transaction
-- Customer ID
-- Transaction ID
-- SKU Category ID
-- SKU ID
--Quantity Sold
-- Sales Amount (Unit price times quantity. For unit price, please divide Sales Amount by Quantity.)
-
-### Dataset 2 - Online_retail_II.xlsx
+### Dataset - Online_retail_II.xlsx
 https://archive.ics.uci.edu/ml/datasets/Online+Retail+II#
 
 Data Set Information:
