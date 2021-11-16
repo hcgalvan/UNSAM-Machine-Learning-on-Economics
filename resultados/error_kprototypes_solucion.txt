@@ -1,0 +1,55 @@
+# Chequeo del valor optimo de 'K' // demanda varios minutos de ejecucion para encontrar el optimo
+# Luego de 2067 minutos me arroja un error, ""
+# "ValueError: Clustering algorithm could not initialize. Consider assigning the initial clusters manually."
+# Las lecturas en https://github.com/nicodv/kmodes/blob/master/README.rst#faq me indica que es una caracteristica 
+# donde no tiene sentido
+# a.Ejecutar con menos clústeres, ya que es posible que los datos no admitan una gran cantidad de clústeres.
+# b.Explore y visualice sus datos, verificando distribuciones extrañas, valores atípicos, etc.
+# c.Limpiar y normalizar los datos
+# d.Aumentar la proporción de filas a columnas. 
+
+cost = []
+for num_clusters in list(range(1,15)):
+    kproto = KPrototypes(n_clusters = num_clusters, init='Cao')
+    kproto.fit_predict(train, categorical=[0, 1, 4, 5, 6, 7])
+    cost.append(kproto.cost_)
+    labels=kproto.labels_
+plt.plot(cost)
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+<ipython-input-153-adf60e635ddc> in <module>
+      4 for num_clusters in list(range(2,15)):
+      5     kproto = KPrototypes(n_clusters = num_clusters, init='Cao')
+----> 6     kproto.fit_predict(train, categorical=[0, 1, 4, 5, 6, 7])
+      7     cost.append(kproto.cost_)
+      8     labels=kproto.labels_
+
+~\AppData\Roaming\Python\Python39\site-packages\kmodes\kmodes.py in fit_predict(self, X, y, **kwargs)
+    144         predict(X).
+    145         """
+--> 146         return self.fit(X, **kwargs).predict(X, **kwargs)
+    147 
+    148     def predict(self, X, **kwargs):
+
+~\AppData\Roaming\Python\Python39\site-packages\kmodes\kprototypes.py in fit(self, X, y, categorical)
+    151         # the data. The function below returns its value.
+    152         self._enc_cluster_centroids, self._enc_map, self.labels_, self.cost_, \
+--> 153         self.n_iter_, self.epoch_costs_, self.gamma = k_prototypes(
+    154             X,
+    155             categorical,
+
+~\AppData\Roaming\Python\Python39\site-packages\kmodes\kprototypes.py in k_prototypes(X, categorical, n_clusters, max_iter, num_dissim, cat_dissim, gamma, init, n_init, verbose, random_state, n_jobs)
+    285     if n_jobs == 1:
+    286         for init_no in range(n_init):
+--> 287             results.append(_k_prototypes_single(Xnum, Xcat, nnumattrs, ncatattrs,
+    288                                                 n_clusters, n_points, max_iter,
+    289                                                 num_dissim, cat_dissim, gamma,
+
+~\AppData\Roaming\Python\Python39\site-packages\kmodes\kprototypes.py in _k_prototypes_single(Xnum, Xcat, nnumattrs, ncatattrs, n_clusters, n_points, max_iter, num_dissim, cat_dissim, gamma, init, init_no, verbose, random_state)
+    394             init = 'random'
+    395         elif init_tries == RAISE_INIT_TRIES:
+--> 396             raise ValueError(
+    397                 "Clustering algorithm could not initialize. "
+    398                 "Consider assigning the initial clusters manually."
+
+ValueError: Clustering algorithm could not initialize. Consider assigning the initial clusters manually.
